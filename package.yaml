@@ -1,0 +1,62 @@
+name: apod
+version: 0.1.0.0
+github: "githubuser/apod"
+license: BSD3
+author: "Author name here"
+maintainer: "example@example.com"
+copyright: "2021 Author name here"
+
+extra-source-files:
+  - README.md
+  - ChangeLog.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description: Please see the README on GitHub at <https://github.com/githubuser/apod#readme>
+
+
+dependencies:
+  - attoparsec == 0.13.2.5
+  - base >= 4.7 && <5
+  - base-compat == 0.11.2
+  - aeson
+  - base >= 4.7 && < 5
+  - bytestring
+  - mtl
+  - req
+  - servant
+  - servant-server
+  - text
+  - wai
+  - warp
+
+library:
+  source-dirs: src
+
+executables:
+  apod-exe:
+    main: Main.hs
+    source-dirs: app
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+    dependencies:
+      - apod
+
+tests:
+  apod-test:
+    main: Spec.hs
+    source-dirs: test
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+    dependencies:
+      - apod

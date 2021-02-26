@@ -1,0 +1,40 @@
+<html>
+<head>
+    <style>
+        #app {
+            margin: 0 auto;
+            width: 50%;
+        }
+
+        #app img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+    </style>
+</head>
+
+<body>
+<div id="app"/>
+<script>
+    fetch("http://0.0.0.0:8080/apod").then(result => {
+        const app = document.getElementById("app")
+        result.json().then(apod => {
+            const title = document.createElement("h1")
+            title.innerText = apod.title
+            const date = document.createElement("h2")
+            date.innerText = apod.date
+            const explanation = document.createElement("div")
+            explanation.innerText = apod.explanation
+            const img = document.createElement("img")
+            img.src = apod.hdurl
+            app.appendChild(title)
+            app.appendChild(date)
+            app.appendChild(explanation)
+            app.appendChild(img)
+        })
+    })
+</script>
+</body>
+<html>
