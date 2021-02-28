@@ -13,6 +13,7 @@ import Control.Monad.Reader
 import Data.Text
 import Lib
 import Network.Wai
+import Network.Wai.Middleware.Cors
 import Prelude.Compat
 import Servant
 import System.Environment
@@ -34,4 +35,4 @@ apodAPI :: Proxy ApodAPI
 apodAPI = Proxy
 
 application :: Application
-application = serve apodAPI apodServer
+application = simpleCors $ serve apodAPI apodServer
